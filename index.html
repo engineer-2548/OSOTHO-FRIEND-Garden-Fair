@@ -1,62 +1,207 @@
-import { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
-import { motion } from 'framer-motion';
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSOTHO & FRIENDS Garden Fair - 65 ปี อ.ส.ท.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme */
+            --bg-primary: #F8F7F2; /* Creamy White */
+            --bg-secondary: #FFFFFF; /* White */
+            --text-primary: #2C3E50; /* Dark Slate Blue */
+            --text-secondary: #34495E; /* Wet Asphalt */
+            --accent: #27AE60; /* Green */
+            --accent-dark: #229954;
+        }
 
-export default function OSOTHOGardenFair() {
-  const [darkMode, setDarkMode] = useState(false);
+        .dark {
+            /* Dark Theme */
+            --bg-primary: #2C3E50; /* Dark Slate Blue */
+            --bg-secondary: #34495E; /* Wet Asphalt */
+            --text-primary: #ECF0F1; /* Clouds */
+            --text-secondary: #BDC3C7; /* Silver */
+            --accent: #2ECC71; /* Emerald */
+            --accent-dark: #27AE60;
+        }
 
-  return (
-    <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-b from-lime-50 to-green-100 text-gray-800'} min-h-screen p-4 transition-all duration-500`}>      
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">🎉 OSOTHO & FRIENDS Garden Fair</h1>
-          <div className="flex items-center space-x-2">
-            <span>🌞</span>
-            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
-            <span>🌙</span>
-          </div>
-        </div>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-        <motion.img 
-          src="https://lh5.googleusercontent.com/d/1mZ5qtDTGvQaGqIiVu0LfqyDMF-JwiJaR"
-          alt="OSOTHO 65"
-          className="rounded-xl w-full h-auto shadow-lg mb-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
+        .card {
+            background-color: var(--bg-secondary);
+            transition: background-color 0.3s;
+        }
 
-        <Card className="bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-70 backdrop-blur border border-gray-200 dark:border-gray-700 shadow-xl">
-          <CardContent className="p-6 space-y-4">
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              ครั้งแรกกับการฉลอง 65 ปีของ <strong>อนุสาร อ.ส.ท.</strong> นิตยสารท่องเที่ยวในตำนาน กับงานแฟร์รักษ์โลก <strong>“OSOTHO & FRIENDS Garden Fair”</strong> ที่มิวเซียมสยาม วันที่ <strong>15–17 สิงหาคม 2568</strong> เวลา <strong>11.00–20.00 น.</strong> เข้าชมฟรี!
-            </motion.p>
-            <ul className="list-disc list-inside space-y-2">
-              <li>MARKET: ตลาดแนวรักษ์โลก ของกิน งานคราฟต์ สินค้าจากวัสดุรีไซเคิล</li>
-              <li>กิจกรรม Painting Thailand วาดภาพเมืองไทยกลางสวน</li>
-              <li>โชว์โขนเด็ก “ระบำวีรชัยลิง” และกิจกรรมเวิร์กช็อปตลอดสามวัน</li>
-              <li>มินิคอนเสิร์ตจากศิลปินดัง: แมวเศษเล็บ, Thee and The Dudes, LANDOKMAI</li>
-              <li>เสวนา Friend Talk โดยนักเดินทางชื่อดัง</li>
-              <li>นิทรรศการภาพถ่ายขาวดำหายาก "65 ปี อ.ส.ท."</li>
-            </ul>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-              ✨ สมัครสมาชิกวันนี้ รับฟรีกระเป๋า iPad ลายวินเทจสุดเก๋ หรือสะสมแต้ม OSOTHO Club พิเศษ 65 พอยต์!<br/>
-              📍 ลานอัฒจรรย์ มิวเซียมสยาม <br/>
-              📆 วันที่ 15–17 สิงหาคม 2568 <br/>
-              ⏰ เวลา 11.00–20.00 น. <br/>
-              ✅ เข้าชมฟรี! ของแจกเพียบ!
-            </motion.p>
-          </CardContent>
-        </Card>
+        .accent-text { color: var(--accent); }
+        .accent-bg { background-color: var(--accent); }
+        .accent-bg-hover:hover { background-color: var(--accent-dark); }
+        .accent-border { border-color: var(--accent); }
 
-        <div className="mt-6 text-center">
-          <a href="https://www.osotho.com" target="_blank" rel="noopener noreferrer">
-            <Button>📖 ติดตามรายละเอียดเพิ่มเติมที่ อนุสาร อ.ส.ท.</Button>
-          </a>
-        </div>
-      </div>
+        /* Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full accent-bg text-white flex items-center justify-center shadow-lg focus:outline-none transition-transform hover:scale-110">
+        <span id="theme-icon">☀️</span>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container mx-auto max-w-4xl p-4 md:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center my-8 md:my-12 reveal">
+            <h2 class="text-2xl md:text-3xl font-light" style="color: var(--text-secondary);">ฉลอง 65 ปี อ.ส.ท. นิตยสารท่องเที่ยวในตำนาน</h2>
+            <h1 class="text-4xl md:text-6xl font-bold accent-text my-4 drop-shadow-sm">OSOTHO & FRIENDS<br>Garden Fair</h1>
+            <img src="https://lh5.googleusercontent.com/d/1mZ5qtDTGvQaGqIiVu0LfqyDMF-JwiJaR" alt="บรรยากาศงาน OSOTHO & FRIENDS Garden Fair" class="w-full rounded-2xl shadow-xl my-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="card p-4 rounded-lg shadow-md">
+                    <p class="text-lg font-semibold">🗓️ 15–17 สิงหาคม 2568</p>
+                </div>
+                <div class="card p-4 rounded-lg shadow-md">
+                    <p class="text-lg font-semibold">🕚 11.00–20.00 น.</p>
+                </div>
+                <div class="card p-4 rounded-lg shadow-md">
+                    <p class="text-lg font-semibold">� มิวเซียมสยาม</p>
+                </div>
+            </div>
+            <p class="mt-6 text-xl font-semibold accent-bg text-white py-3 px-6 rounded-full inline-block shadow-md">เข้าชมฟรี!</p>
+        </header>
+
+        <!-- About Section -->
+        <section class="my-16 reveal">
+            <p class="text-xl md:text-2xl text-center leading-relaxed" style="color: var(--text-secondary);">
+                ครั้งแรก! กับการฉลองการเดินทางอันยาวนาน 65 ปีของ อ.ส.ท. ที่เปิดให้ทุกคนมาแลกเปลี่ยนเรื่องราว รอยยิ้ม และแรงบันดาลใจในแบบเพื่อนกัน กลางพื้นที่สีเขียวของมิวเซียมสยาม
+            </p>
+        </section>
+
+        <!-- Activities Section -->
+        <section class="my-16 reveal">
+            <h2 class="text-3xl font-bold text-center mb-10 accent-text">กิจกรรมจัดเต็ม เชื่อมโยงคนรักการเดินทาง</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Market -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">🛍️ MARKET ตลาดมีเรื่องเล่า</h3>
+                    <p style="color: var(--text-secondary);">รวมของกิน งานคราฟต์ และสินค้ารักษ์โลก เช่น กระเป๋ารีไซเคิล, เซรามิกน่ารัก, และเมนูเด็ดจากร้านดังทั่วไทย</p>
+                </div>
+                <!-- Workshops -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">🎨 WORKSHOPS สร้างสรรค์</h3>
+                    <p style="color: var(--text-secondary);">ลองหมักซีอิ๊วธรรมชาติ, ทำ Eco Print, ปั้นโคเคดามะ (บอลมอสญี่ปุ่น) และคลาสวาดภาพสีน้ำกับ อ.กิ้ว Vanont</p>
+                </div>
+                <!-- Talks -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">🎤 FRIEND TALK เสวนารักษ์โลก</h3>
+                    <p style="color: var(--text-secondary);">คุยสบายๆ กับนักเดินทางผู้สร้างแรงบันดาลใจ อาทิ แพร Pear is Hungry, ธัชรวี Thailand Outdoor ดำเนินรายการโดยดีเจพี่อ้อย Green Wave</p>
+                </div>
+                <!-- Music -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">🎶 MINI CONCERT ในสวน</h3>
+                    <p style="color: var(--text-secondary);">ปิดท้ายช่วงเย็นด้วยดนตรีเพลินๆ พบกับ แมวเศษเล็บ The Voice, Thee and The Dudes และ LANDOKMAI</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Section -->
+        <section class="my-16 reveal">
+             <div class="card p-8 rounded-xl shadow-xl border-t-4 accent-border">
+                <h2 class="text-3xl font-bold text-center mb-6 accent-text">ไฮไลต์ที่พลาดไม่ได้!</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold">📸 นิทรรศการภาพถ่าย “65 ปี อ.ส.ท.”</h3>
+                        <p style="color: var(--text-secondary);">รวบรวมภาพขาวดำหายากจากยุคแรกเริ่มของการท่องเที่ยวไทย ถ่ายทอดผ่านสายตาช่างภาพคู่ใจ อ.ส.ท.</p>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold">🎁 ของที่ระลึกและโปรโมชั่นพิเศษ</h3>
+                        <p style="color: var(--text-secondary);">สมัครสมาชิกรายปี รับฟรีกระเป๋า iPad ลายวินเทจ หรือสมัคร OSOTHO Club รับทันที 65 พอยต์!</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">👺 โชว์พิเศษ “ระบำวีรชัยลิง”</h3>
+                        <p style="color: var(--text-secondary);">ชมการแสดงโขนเด็กสุดอลังการ และร่วมกิจกรรม Painting Thailand วาดภาพเมืองไทยในสวน</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center my-12 pt-8 border-t" style="border-color: var(--text-secondary-alpha, #ccc3);">
+            <p class="text-lg font-semibold">มาเดินเล่น เวิร์กช็อป ช็อป ชิม และฟังดนตรีกัน!</p>
+            <p class="mt-2" style="color: var(--text-secondary);">ติดตามรายละเอียดเพิ่มเติมได้ที่ Facebook: <a href="#" class="font-bold accent-text hover:underline">อนุสาร อ.ส.ท.</a></p>
+            <div class="flex justify-center space-x-2 mt-4 text-sm" style="color: var(--text-secondary);">
+                <span>#OSOTHO65ปี</span>
+                <span>#OSOTHOandFriends</span>
+                <span>#เที่ยวไทยไปกับอ.ส.ท.</span>
+            </div>
+        </footer>
     </div>
-  );
-}
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const userTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        const themeCheck = () => {
+            if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.textContent = '🌙';
+            } else {
+                themeIcon.textContent = '☀️';
+            }
+        };
+
+        const themeSwitch = () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '☀️';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '🌙';
+            }
+        };
+
+        themeToggle.addEventListener('click', themeSwitch);
+        themeCheck();
+
+        // Scroll Animation Logic
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+
+</body>
+</html>
+�
