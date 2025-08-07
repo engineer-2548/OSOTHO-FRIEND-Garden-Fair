@@ -1,0 +1,62 @@
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { motion } from 'framer-motion';
+
+export default function OSOTHOGardenFair() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-b from-lime-50 to-green-100 text-gray-800'} min-h-screen p-4 transition-all duration-500`}>      
+      <div className="max-w-4xl mx-auto">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">🎉 OSOTHO & FRIENDS Garden Fair</h1>
+          <div className="flex items-center space-x-2">
+            <span>🌞</span>
+            <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+            <span>🌙</span>
+          </div>
+        </div>
+
+        <motion.img 
+          src="https://lh5.googleusercontent.com/d/1mZ5qtDTGvQaGqIiVu0LfqyDMF-JwiJaR"
+          alt="OSOTHO 65"
+          className="rounded-xl w-full h-auto shadow-lg mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        />
+
+        <Card className="bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-70 backdrop-blur border border-gray-200 dark:border-gray-700 shadow-xl">
+          <CardContent className="p-6 space-y-4">
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+              ครั้งแรกกับการฉลอง 65 ปีของ <strong>อนุสาร อ.ส.ท.</strong> นิตยสารท่องเที่ยวในตำนาน กับงานแฟร์รักษ์โลก <strong>“OSOTHO & FRIENDS Garden Fair”</strong> ที่มิวเซียมสยาม วันที่ <strong>15–17 สิงหาคม 2568</strong> เวลา <strong>11.00–20.00 น.</strong> เข้าชมฟรี!
+            </motion.p>
+            <ul className="list-disc list-inside space-y-2">
+              <li>MARKET: ตลาดแนวรักษ์โลก ของกิน งานคราฟต์ สินค้าจากวัสดุรีไซเคิล</li>
+              <li>กิจกรรม Painting Thailand วาดภาพเมืองไทยกลางสวน</li>
+              <li>โชว์โขนเด็ก “ระบำวีรชัยลิง” และกิจกรรมเวิร์กช็อปตลอดสามวัน</li>
+              <li>มินิคอนเสิร์ตจากศิลปินดัง: แมวเศษเล็บ, Thee and The Dudes, LANDOKMAI</li>
+              <li>เสวนา Friend Talk โดยนักเดินทางชื่อดัง</li>
+              <li>นิทรรศการภาพถ่ายขาวดำหายาก "65 ปี อ.ส.ท."</li>
+            </ul>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+              ✨ สมัครสมาชิกวันนี้ รับฟรีกระเป๋า iPad ลายวินเทจสุดเก๋ หรือสะสมแต้ม OSOTHO Club พิเศษ 65 พอยต์!<br/>
+              📍 ลานอัฒจรรย์ มิวเซียมสยาม <br/>
+              📆 วันที่ 15–17 สิงหาคม 2568 <br/>
+              ⏰ เวลา 11.00–20.00 น. <br/>
+              ✅ เข้าชมฟรี! ของแจกเพียบ!
+            </motion.p>
+          </CardContent>
+        </Card>
+
+        <div className="mt-6 text-center">
+          <a href="https://www.osotho.com" target="_blank" rel="noopener noreferrer">
+            <Button>📖 ติดตามรายละเอียดเพิ่มเติมที่ อนุสาร อ.ส.ท.</Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
